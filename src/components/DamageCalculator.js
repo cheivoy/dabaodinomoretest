@@ -859,3 +859,6 @@ const DamageCalculator = () => {
                 <p>防守屬性收益計算器 © {new Date().getFullYear()} | 數據僅供參考</p>
             </div>
         </div>
+      );
+    };
+
