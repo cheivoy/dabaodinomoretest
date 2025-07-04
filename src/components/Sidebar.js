@@ -33,6 +33,12 @@ const Sidebar = ({ setActiveCalculator }) => {
               治療強度計算
             </button>
             <button
+              onClick={() => { setActiveCalculator('damage_2'); setIsOpen(false); }}
+              className="block w-full text-left py-2 px-4 text-cherry-700 hover:bg-cherry-100 rounded-lg transition-colors"
+            >
+              攻擊計算器
+            </button>
+            <button
               onClick={() => { setActiveCalculator('inner_power'); setIsOpen(false); }}
               className="block w-full text-left py-2 px-4 text-cherry-700 hover:bg-cherry-100 rounded-lg transition-colors"
             >
