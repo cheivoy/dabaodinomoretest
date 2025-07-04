@@ -13,7 +13,7 @@ const HomeMenu = ({ setActiveCalculator }) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
       <h1 className="text-3xl font-bold text-cherry-800 mb-8">屬性收益分析計算器</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-4xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl">
         <button
           onClick={() => setActiveCalculator('damage')}
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition result-card"
@@ -25,6 +25,12 @@ const HomeMenu = ({ setActiveCalculator }) => {
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition result-card"
         >
           治療強度計算
+        </button>
+        <button
+          onClick={() => setActiveCalculator('damage_2')}
+          className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition result-card"
+        >
+          攻擊計算器
         </button>
         <button
           onClick={() => setActiveCalculator('inner_power')}
@@ -51,6 +57,8 @@ const App = () => {
             <DamageCalculator />
           ) : activeCalculator === 'healing' ? (
             <HealingCalculator />
+          ) : activeCalculator === 'damage_2' ? (
+            <DamageCalculator2 />
           ) : (
             <InnerPowerCalculator />
           )}
