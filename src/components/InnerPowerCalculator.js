@@ -57,14 +57,14 @@ const InnerPowerCalculator = () => {
       elem_resist, shield, break_defense, break_shield, ignore_elem_resist
     } = inputs;
 
-    // 計算最終攻擊力
+    // 最終攻擊力
     const total_attack = (toNum(base_attack) + toNum(equip_attack) + toNum(inner_attack)) *
       (1 + toNum(pofu_percent) + toNum(jianxin_percent) + toNum(fire_zhoutian_percent)) * 1.2;
 
-    // 計算最終元素攻擊
+    // 最終元素攻擊
     const total_elemental_attack = toNum(elemental_attack) * (1 + toNum(fire_zhoutian_percent)) * 1.2;
 
-    // 計算剩餘氣盾
+    // 剩餘氣盾
     const shield_remaining = toNum(break_shield) >= toNum(shield) ? 0 :
       toNum(shield) / 3 <= toNum(break_shield) ? 0.5 * (toNum(shield) - toNum(break_shield)) :
       toNum(shield) - 2 * toNum(break_shield);
@@ -83,9 +83,9 @@ const InnerPowerCalculator = () => {
     const base_damage = (toNum(skill_base) + (toNum(skill_multiplier) / 100) * (total_attack - shield_remaining)) *
       def_penetration + (toNum(skill_multiplier) / 100) * total_elemental_attack * elem_penetration;
 
-    // 會心加成（簡化處理）
+    // 會心加成（簡化）
     const crit_chance = (115 * 1000 - 1230) / (1000 + 1548) / 100 + toNum(gold_zhoutian);
-    const crit_multiplier = 1 + crit_chance * (1.5 - 1); // 假設會心傷害為 150%
+    const crit_multiplier = 1 + crit_chance * (1.5 - 1); // 假設會心傷害為150%
     const final_damage = base_damage * crit_multiplier;
 
     return {
@@ -100,7 +100,7 @@ const InnerPowerCalculator = () => {
   };
 
   const generateChartData = () => {
-    const points = Array.from({ length: 51 }, (_, i) => i * 100); // 每100點內功詞條
+    const points = Array.from({ length: 51 }, (_, i) => i * 100); // 0到5000點內功詞條
     const data = points.map((point) => {
       const attack_with_inner = (toNum(inputs.base_attack) + toNum(inputs.equip_attack) + point) *
         (1 + toNum(inputs.pofu_percent) + toNum(inputs.jianxin_percent) + toNum(inputs.fire_zhoutian_percent)) * 1.2;
